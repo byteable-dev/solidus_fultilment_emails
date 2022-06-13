@@ -1,0 +1,42 @@
+<div data-hook="new_email">
+  <fieldset class="no-border-bottom">
+    <legend><%= t('.email') %></legend>
+
+    <div class="field">
+      <%= f.label :subject %>
+      <%= f.text_field :subject, class: "form-control fullwidth" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :bcc_to %>
+      <%= f.text_field :bcc_to, class: "form-control fullwidth" %>
+    </div>
+
+    <div class="row">
+      <div class="col-h3" style="margin-left: 20px">
+        <div class="field">
+          <%= f.label :send_to_customer %>
+          <%= f.check_box :send_to_customer, class: "" %>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="field">
+          <%= f.label :send_to_admin %>
+          <%= f.check_box :send_to_admin, class: "" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :content %>
+      <%= f.text_area :content, class: "form-control fullwidth", id: "page_body" %>
+    </div>
+
+
+    <% if f.object.new_record? %>
+      <%= render partial: 'spree/admin/shared/new_resource_links', locals: { collection_url: admin_fulfillment_emails_path } %>
+    <% else %>
+      <%= render partial: 'spree/admin/shared/edit_resource_links', locals: { collection_url: admin_fulfillment_emails_path } %>
+    <% end %>
+  </fieldset>
+</div>

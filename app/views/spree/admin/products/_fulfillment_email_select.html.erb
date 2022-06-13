@@ -1,0 +1,13 @@
+<div data-hook="admin_product_form_fulfillment_emal">
+  <%= f.field_container :fulfillment_email do %>
+    <label>
+      <%= f.label :fulfillment_email_id, 'Fulfillment Email' %>
+      <%= f.collection_select(:fulfillment_email_id, 
+                              ::SolidusFulfillmentEmails::Email.all, 
+                              :id, 
+                              :subject,
+                              { include_blank: t('spree.match_choices.none') }, { class: 'custom-select' }) %>
+      <%= f.error_message_on :fulfillment_email_id %>
+    </label>
+  <% end %>
+</div>

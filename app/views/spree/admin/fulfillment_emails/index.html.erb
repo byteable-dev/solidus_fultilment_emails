@@ -1,0 +1,41 @@
+<% admin_breadcrumb(plural_resource_name(SolidusFulfillmentEmails::Email)) %>
+<% content_for :page_actions do %>
+  <li><%= link_to t('.new_fulfillment_email'), new_admin_fulfillment_email_path, class: 'btn btn-primary' %></li>
+<% end %>
+
+<% if @emails.any? %>
+<table id="listing_fulfillment_emails" class="index">
+    <thead>
+      <tr data-hook="admin_fulfillment_emails_index_headers">
+        <th><%= sort_link(@search, :subject, SolidusFulfillmentEmails::Email.human_attribute_name(:subject)) %></th>
+        <th><%= sort_link(@search, :bcc_to, SolidusFulfillmentEmails::Email.human_attribute_name(:bcc_to)) %></th>
+        <th><%= sort_link(@search, :send_to_customer, SolidusFulfillmentEmails::Email.human_attribute_name(:send_to_customer)) %></th>
+        <th><%= sort_link(@search, :send_to_admin, SolidusFulfillmentEmails::Email.human_attribute_name(:send_to_admin)) %></th>
+        <th><%= sort_link(@search, :created_at, SolidusFulfillmentEmails::Email.human_attribute_name(:created_at)) %></th>
+        <th data-hook="admin_fulfillment_emails_emails_index_header_actions" class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @emails.each do |email| %>
+       <tr>
+          <td><%= email.subject %></td>
+          <td><%= email.bcc_to %></td>
+          <td><%= email.send_to_customer %></td>
+          <td><%= email.send_to_admin %></td>
+          <td><%= l(email.created_at.to_date) %></td>
+          <td>
+            <%= link_to_edit(email, no_text: true) %>
+            <%= link_to_delete(email, no_text: true) %>
+          </td>
+       </tr>
+      <% end %>
+    </tbody>
+    </thead>
+</table>
+<% else %>
+<div class="no-objects-found">
+  <%= render 'spree/admin/shared/no_objects_found',
+    resource: ::SolidusFulfillmentEmails::Email,
+    new_resource_url: spree.new_admin_fulfillment_email_path %>
+</div>
+<% end %>
