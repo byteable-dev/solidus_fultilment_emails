@@ -9,12 +9,12 @@ Gem::Specification.new do |spec|
   spec.email = 'styrken@gmail.com'
 
   spec.summary = 'A solidus extension that enables custom fulfillment emails for each product.'
-  spec.description = spec.summary() 
+  spec.description = spec.summary 
   spec.homepage = 'https://github.com/byteable-dev/solidus_fultilment_emails'
   spec.license = 'BSD-3-Clause'
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = spec.homepage()
+  spec.metadata['source_code_uri'] = spec.homepage
 
   spec.required_ruby_version = Gem::Requirement.new('~> 2.7')
 
