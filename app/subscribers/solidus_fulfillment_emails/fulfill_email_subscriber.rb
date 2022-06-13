@@ -1,11 +1,22 @@
 # frozen_string_literal: true
 
 module SolidusFulfillmentEmails
+  ##
+  # Fulfillment Email Subscriber
+  #
+  # Listens for when an order is completed and send out emails
+  # to products that has fulfillment email selected.
+  #
+  # It checks for products with parts and handles that as well.
   module FulfillEmailSubscriber
     include Spree::Event::Subscriber
 
     event_action :order_finalized
 
+    ##
+    # Order finalized
+    #
+    # Called when an order is finalized and send out emails
     def order_finalized(event)
       order = event.payload[:order]
 
@@ -44,6 +55,10 @@ module SolidusFulfillmentEmails
 
     private
 
+    ##
+    # deliver!
+    #
+    # The actual deliver email function
     def deliver!(sent_to, order, email, product)
       ::SolidusFulfillmentEmails::FulfillmentMailer.with(sent_to: sent_to,
                                                          order: order,
