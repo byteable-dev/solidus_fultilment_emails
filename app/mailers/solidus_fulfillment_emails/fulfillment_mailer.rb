@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 module SolidusFulfillmentEmails
-
   ##
   # Filfillment Mailer
   #
   # The mailer class that can send mails
   class FulfillmentMailer < ::Spree::BaseMailer
-
     ##
     # Fulfill
     #
@@ -17,9 +15,10 @@ module SolidusFulfillmentEmails
       @email = params[:email]
       @product = params[:product]
 
-      mail(to: params[:sent_to], 
-           bcc: @email.bcc_to, 
-           subject: @email.subject)
+      mail(to: params[:sent_to],
+        bcc: @email.bcc_to,
+        subject: @email.subject,
+        from: from_address(@order.store))
     end
   end
 end
