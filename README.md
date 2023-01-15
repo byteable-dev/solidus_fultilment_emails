@@ -27,9 +27,8 @@ rake db:migrate
 
 You can use the following replacements in your email templates:
 
-| Replacement          | Description |
-|----------------------| ----------- |
-| {{order_number}}     | The order number |
-| {{order_total}}      | The total of the order |
- | {{first_name}}       | The first name of the customer |
-| {{last_name}}        | The last name of the customer |
+| Replacement      | Description |
+|------------------| ----------- |
+| {{order_number}} | The order number |
+| {{order_total}}  | The total of the order |
+ | {{name}}         | The name of the customer |
