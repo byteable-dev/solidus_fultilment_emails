@@ -20,10 +20,12 @@ when 'mysql'
 when 'postgresql'
   gem 'pg'
 else
-  gem 'sqlite3'
+  gem 'sqlite3', '1.5.0'
 end
 
 gemspec
+
+gem 'nio4r', '2.6.1'
 
 # Use a local Gemfile to include development dependencies that might not be
 # relevant for the project or for other contributors, e.g. pry-byebug.
